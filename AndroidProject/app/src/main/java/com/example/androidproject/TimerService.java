@@ -26,7 +26,7 @@ public class TimerService extends Service {
 
     public static CountDownTimer timer = null;
     public static boolean running = true;
-    public static boolean notified = false;
+    public static boolean notified = true;
     String CHANNEL_ID = "Schedule App Channel";
 
     @Override
@@ -55,7 +55,7 @@ public class TimerService extends Service {
 
         timer = new CountDownTimer(1 * 30 * 1000, 1000) {
             public void onTick(long millisUntilFinished) {
-                if(millisUntilFinished< 20*1000 && !notified)
+                if(millisUntilFinished< 20*1000 && notified==false)
                 {
                     if (ActivityCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
                         notifManager.notify(1, builder.build());

@@ -266,6 +266,7 @@ public class LoginFragment extends Fragment {
 
     private void startApp() {
         Intent intent = new Intent(getActivity(), AppActivity.class);
+        TimerService.running = true;
         startActivity(intent);
         requireActivity().overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         requireActivity().finish();

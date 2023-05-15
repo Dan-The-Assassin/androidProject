@@ -28,6 +28,11 @@ public class MainActivity extends AppCompatActivity implements FragmentNav {
         setContentView(R.layout.activity_main);
         Objects.requireNonNull(getSupportActionBar()).hide();
 
+        TimerService.notified = true;
+        if(TimerService.timer!=null) {
+            TimerService.timer.cancel();
+        }
+        TimerService.running = false;
         /*getSupportFragmentManager().beginTransaction()
                 .setReorderingAllowed(true)
                 .add(R.id.container, LoginFragment.class, null)
@@ -43,12 +48,6 @@ public class MainActivity extends AppCompatActivity implements FragmentNav {
 
         numeTabs.add("Login");
         numeTabs.add("Register");
-
-        TimerService.notified = true;
-        if(TimerService.timer!=null) {
-            TimerService.timer.cancel();
-            TimerService.running = true;
-        }
     }
 
     @Override
@@ -75,8 +74,8 @@ public class MainActivity extends AppCompatActivity implements FragmentNav {
         TimerService.notified = true;
         if(TimerService.timer!=null) {
             TimerService.timer.cancel();
-            TimerService.running = true;
         }
+        TimerService.running = false;
     }
 
     protected void onStop() {
@@ -84,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements FragmentNav {
         TimerService.notified = true;
         if(TimerService.timer!=null) {
             TimerService.timer.cancel();
-            TimerService.running = true;
         }
+        TimerService.running = false;
     }
 }

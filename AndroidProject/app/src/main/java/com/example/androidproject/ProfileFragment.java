@@ -167,6 +167,12 @@ public class ProfileFragment extends Fragment {
     }
 
     void exitApp(){
+        ((AppActivity) getActivity()).notificareTaci = true;
+        TimerService.notified = true;
+        TimerService.running = false;
+        if(TimerService.timer!=null) {
+            TimerService.timer.cancel();
+        }
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.apply();

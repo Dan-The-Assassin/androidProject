@@ -36,6 +36,8 @@ public class AppActivity extends AppCompatActivity implements FragmentNav {
     private GoogleSignInOptions gso;
     private GoogleSignInClient gsc;
 
+    public boolean notificareTaci = false;
+
     private static final String SAVED_TITLES = "saveTitles";
     private static final String SAVED_DATES = "saveDates";
 
@@ -140,9 +142,11 @@ public class AppActivity extends AppCompatActivity implements FragmentNav {
     protected void onStop() {
         super.onStop();
 
-        TimerService.timer.start();
-        TimerService.notified = false;
-        TimerService.running = true;
+        if(!notificareTaci) {
+            TimerService.timer.start();
+            TimerService.notified = false;
+            TimerService.running = true;
+        }
     }
 
     public void createTask(int day, int month, int year, String title){
