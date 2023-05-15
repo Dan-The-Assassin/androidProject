@@ -53,7 +53,14 @@ public class MainActivity extends AppCompatActivity implements FragmentNav {
 
     @Override
     public void navigateFrag(Fragment fragment, Boolean addToStack) {
-       FragmentTransaction transaction = getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment);
+       FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+        if(fragment instanceof RegisterFragment)
+            transaction.setCustomAnimations(R.anim.from_right, R.anim.to_left);
+        else
+            transaction.setCustomAnimations(R.anim.from_left, R.anim.to_right);
+
+        transaction.replace(R.id.container, fragment);
 
        if(addToStack)
        {

@@ -8,10 +8,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -25,6 +27,8 @@ public class HomeFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    //private static final String SAVED_TITLES = "saveTitles";
+    //private static final String SAVED_DATES = "saveDates";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -34,6 +38,8 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
+
+    Parcelable state = null;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -65,7 +71,12 @@ public class HomeFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-
+       /* if(savedInstanceState!=null)
+        {
+            ArrayList<String> titles = savedInstanceState.getStringArrayList(SAVED_TITLES);
+            ArrayList<String> dates = savedInstanceState.getStringArrayList(SAVED_DATES);
+            ((AppActivity) requireActivity()).restoreTasks(titles, dates);
+        }*/
     }
 
     @Override
@@ -107,4 +118,15 @@ public class HomeFragment extends Fragment {
         super.onDetach();
         fragNav = null;
     }
+
+   /* @Override
+    public void onSaveInstanceState(Bundle outState) {
+        ArrayList<String> titles = ((AppActivity) requireActivity()).getAllTaskTitles();
+        outState.putStringArrayList(SAVED_TITLES, titles);
+        ArrayList<String> dates = ((AppActivity) requireActivity()).getAllTaskDates();
+        outState.putStringArrayList(SAVED_DATES, dates);
+        // putting recyclerview items
+       // outState.putParcelableArrayList(SAVED_RECYCLER_VIEW_DATASET_ID, (ArrayList<? extends Parcelable>) ((AppActivity) requireActivity()).allTasks);
+        super.onSaveInstanceState(outState);
+    }*/
 }

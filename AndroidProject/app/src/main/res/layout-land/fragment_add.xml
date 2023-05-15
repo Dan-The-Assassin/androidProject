@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".AddFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/task_title"
+            style = "@style/Widget.Design.TextInputLayout"
+            app:boxBackgroundColor="#F8E9FD"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="150dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/task_title"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/select_date"
+            android:textStyle="bold"
+            android:shadowColor="@color/gray"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:gravity="center"/>
+        
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="1/1/2023"
+            android:textSize="25sp"
+            android:textColor="@color/black"
+            style="?android:spinnerStyle"
+            android:layout_marginTop="10dp"
+            android:id="@+id/btn_datePicker"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_add_finish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="@color/blue_primary"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="@color/blue_primary"/>
+
+    </LinearLayout>
+</FrameLayout>

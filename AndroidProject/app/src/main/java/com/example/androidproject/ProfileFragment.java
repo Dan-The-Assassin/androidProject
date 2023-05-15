@@ -58,6 +58,8 @@ public class ProfileFragment extends Fragment {
 
     private SharedPreferences sharedPreferences;
 
+    //private Uri imageUri = null;
+
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -87,6 +89,7 @@ public class ProfileFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -130,6 +133,7 @@ public class ProfileFragment extends Fragment {
         });
 
         profilePic = view.findViewById(R.id.profile_pic);
+
         if(((AppActivity) getActivity()).profilePic!=null)
             profilePic.setImageURI(((AppActivity) getActivity()).profilePic);
 
@@ -168,6 +172,7 @@ public class ProfileFragment extends Fragment {
         editor.apply();
         Intent intent = new Intent(getActivity(), MainActivity.class);
         startActivity(intent);
+        requireActivity().overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         requireActivity().finish();
     }
 
@@ -202,7 +207,13 @@ public class ProfileFragment extends Fragment {
         if(resultCode == RESULT_OK && data!=null)
         {
             ((AppActivity) getActivity()).profilePic = data.getData();
+           // imageUri = data.getData();
             profilePic.setImageURI(((AppActivity) getActivity()).profilePic);
         }
     }
+
+  /*  @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putParcelable("imageUri", imageUri);
+    }*/
 }
